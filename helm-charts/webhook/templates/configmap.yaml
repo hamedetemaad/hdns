@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  hdns.cfg: |
+    {
+      "service_host" : "{{ .Values.hdns.service_host }}",
+      "service_port" : "{{ .Values.hdns.service_port }}",
+      "service_proto": "{{ .Values.hdns.service_proto }}",
+      "sidecar_injection": "{{ .Values.hdns.sidecar_injection }}",
+      "dns_host" : "{{ .Values.hdns.dns_host }}",
+      "dns_port" : "{{ .Values.hdns.dns_port }}",
+      "dns_spki" : "{{ .Values.hdns.dns_spki }}",
+      "block_domains" : []
+    }
+kind: ConfigMap
+metadata:
+  name: hdns-cm
+  namespace: hdns

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-test-pod
+  labels:
+    DNSProxy: "true"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:v0.0.1
+    command: ["sleep", "3600"] 
+  restartPolicy: Never

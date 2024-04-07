@@ -1,0 +1,10 @@
+apiVersion: hdns.io/v1alpha1
+kind: DNSBlock
+metadata:
+  name: test
+  namespace: hdns
+spec:
+  domains:
+    - google.com
+    - youtube.com
+    - facebook.com

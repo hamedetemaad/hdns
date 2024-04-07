@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook-server
+  namespace: hdns
+spec:
+  replicas: {{ .Values.webhook.replicaCount }}
+  selector:
+    matchLabels:
+      app: webhook-server
+  template:
+    metadata:
+      labels:
+        app: webhook-server
+    spec:
+      containers:
+        - name: webhook-server
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ports:
+          - containerPort: {{ .Values.webhook.targetPort }}
+          volumeMounts:
+            - name: tls-certs
+              mountPath: /tmp/certs
+              readOnly: true
+      volumes:
+        - name: tls-certs
+          secret:
+            secretName: webhook-tls-secret

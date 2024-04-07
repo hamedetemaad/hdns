@@ -1,0 +1,23 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: hdns-admission-webhook
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "0"
+webhooks:
+- name: hdns-admission-webhook.hdns.io
+  clientConfig:
+    caBundle: {{ .Values.webhook.caBundle }}
+    service:
+      namespace: hdns
+      name: webhook-service
+      path: /mutate
+  rules:
+  - operations: ["CREATE"]
+    apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  timeoutSeconds: 5

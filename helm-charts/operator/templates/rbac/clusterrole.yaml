@@ -1,0 +1,32 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "hdns-operator.fullname" . }}
+  labels:
+    {{ include "hdns-operator.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - hdns.io
+    resources:
+      - dnsblocks
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups: [""]
+    resources: 
+      - configmaps
+    verbs:
+      - get
+      - update
+  {{ if .Values.ha.enabled }}
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - get
+      - watch
+      - create
+      - update
+  {{ end }}

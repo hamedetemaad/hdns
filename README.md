@@ -124,13 +124,13 @@ spec:
 ```
 
 ## Improvements
-### 0) implementation of a connection pool for upstream connections (performance)
-### 1) rate limit number of requests 
-### 2) some firewall for inspecting dns queries
-### 3) support for multiple upstreams and loadbalancing between them
-### 4) DNS Cache
-### 5) support for DNS Over TLSProxy
-### 6) Block request type ANY
-### 7) Block IPv6 requests
-### 8) query monitoring and logging
-### 9) forwarding queries for specific domains to some specific upstreams(or based on location)
+##### 0) implementation of a connection pool for upstream connections (performance)
+##### 1) rate limit number of requests 
+##### 2) some firewall for inspecting dns queries
+##### 3) support for multiple upstreams and loadbalancing between them
+##### 4) DNS Cache
+##### 5) support for DNS Over TLSProxy
+##### 6) Block request type ANY
+##### 7) Block IPv6 requests
+##### 8) query monitoring and logging
+##### 9) forwarding queries for specific domains to some specific upstreams(or based on location)
